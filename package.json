@@ -1,0 +1,44 @@
+{
+  "name": "afpte-conviene",
+  "version": "0.0.1",
+  "description": "AFPTeConviene",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "export": "npm run build && next export",
+    "build": "next build",
+    "postinstall": "next build",
+    "start": "next start --port ${PORT:-3000}",
+    "start-prod": "npm run build && cross-env NODE_ENV=production node server.js"
+  },
+  "author": {
+    "name": "Celula Satelite - Juan Cid"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
+    "cross-env": "^7.0.3",
+    "formik": "^2.2.5",
+    "next": "10.0.4",
+    "next-images": "^1.6.2",
+    "next-redux-wrapper": "^6.0.2",
+    "nextjs-fonts": "^0.22.0",
+    "node-sass": "^5.0.0",
+    "react": "17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "17.0.1",
+    "react-gtm-module": "^2.0.11",
+    "react-redux": "^7.2.2",
+    "react-stepper-horizontal": "^1.0.11",
+    "react-text-mask": "^5.4.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "text-mask-addons": "^3.8.0",
+    "text-mask-rut": "0.0.3",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.1"
+  }
+}
