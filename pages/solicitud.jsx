@@ -41,7 +41,7 @@ export default function solicitud() {
                                     <div className="txt">
                                         <div className="container-title">
                                             <h4>{exclamacion}Tu solicitud fue enviada con {eacento}xito!</h4>
-                                            <p>Muchas gracias por utilizar la calculadora de Ahorro Previsional Voluntario, un ejecutivo se contactar{aacento} contigo a la brevedad para entregarte toda la asesor{iacento}a necesaria.</p>
+                                            <p>Muchas gracias por utilizar la calculadora de “Que AFP te conviene”, un ejecutivo se contactar{aacento} contigo a la brevedad para entregarte toda la asesor{iacento}a necesaria.</p>
                                             <div className="d-flex justify-content-center mb-5">
                                                 <button
                                                     type="button"
@@ -49,7 +49,7 @@ export default function solicitud() {
                                                     id="webmodelo"
                                                     onClick={redireccion}
                                                 >
-                                                    Visitar sitio AFP Modelo
+                                                    Visitar sitio de AFP Modelo
                                                 </button>
                                             </div>
                                             <Link href="/" passHref>

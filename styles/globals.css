@@ -21,7 +21,7 @@ a {
 
 h1 {
     font-size: 60px;
-    line-height: 70,31px;
+    line-height: 60px;
 }
 
 h2 {
@@ -40,23 +40,26 @@ p {
 }
 
 small {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 * {
     box-sizing: border-box;
-    color: #54575c;
+    color: #333333;
     font-weight: 400;
     font-family: Roboto, sans-serif;
 }
 
 section {
-    margin-top: 64px;
+    margin-top: 0px;
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 0rem;
     width: 100%;
 }
-
+.container{
+    max-width: 1300px;
+    margin-bottom: 5rem;
+}
 .container-padre {
     display: inline-flex;
     justify-content: center;
@@ -77,9 +80,9 @@ section {
 }
 
     .card.formulario {
-        max-width: 570px;
+        max-width: 528px;
         justify-content: center;
-        padding: 0.5rem 1rem;
+        padding: 0;
     }
 
     .card .card-header {
@@ -136,7 +139,12 @@ section {
 
 .green-tabla {
     background-color: #72b500 !important;
-    color: #ffffff;
+    color: #ffffff !important;
+}
+
+.blue-tabla {
+    background-color: #0B7AC7 !important;
+    color: #ffffff !important;
 }
 
 .disclaimer-modal {
@@ -257,6 +265,7 @@ section {
 
 .form-check {
     margin: 1rem;
+    white-space: nowrap;
 }
 
 .medio {
@@ -374,8 +383,8 @@ input[type="checkbox"] + label {
     }
 
     h1 {
-        font-size: 24px !important;
-        line-height: 28px;
+        font-size: 36px !important;
+        line-height: 47px !important;
     }
 
     h2 {
@@ -398,7 +407,7 @@ input[type="checkbox"] + label {
     }
 
     .form {
-        margin-top: 2rem;
+        margin-top: 1rem;
         padding: 0;
     }
 

@@ -8,7 +8,7 @@ import axios from 'axios';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { v4 as uuidv4 } from 'uuid';
-import joven2 from "../public/assets/svg/joven2.svg";
+import shapeBkg from "../public/assets/svg/mobiles/backgroundMobile.svg";
 
 
 export default function Home(props) {
@@ -101,34 +101,32 @@ export default function Home(props) {
                     <div className="row w-100 container-padre calculadora">
                         <div className="col-12 d-flex justify-content-center mobile">
                             <div className="container-title">
-                                <h1>Conoce cuánto</h1>
-                                <h1>aumentaría tu sueldo,</h1>
-                                <h1>al cambiarte a</h1>
-                                <h1>AFP Modelo.</h1>
-                                <p>
-                                    Únete a la AFP con una de las comisiones más bajas del mercado.
-                                </p>
+                                    <h1>Compara tu afp con AFP modelo,
+                                        <br/>
+                                        <span className="green">y descubre cuál te conviene más.</span>
+                                    </h1>
                                 <br></br>
                                 <br></br>
-                                <img src={ampolleta} alt="ampolleta" />
                             </div>
                         </div>
-                        <div className="col-sm-12 col-md-3 bloque desktop">
+                        <div className="col-12 d-flex mobile">
+                            <p className='txtMobileShape'>La comisión y la rentabilidad hacen una diferencia en tus ahorros. Revisa cuánto hubieras ahorrado con Modelo</p>
+                            <img src={shapeBkg} className="background " alt="compara tu AFP"/>
+                        </div>
+                        <div className="col-sm-12 col-md-6 bloque desktop">
                             <div className="txtDesktop">
                                 <div className="container-title">
-                                    <h1>Conoce cuánto</h1>
-                                    <h1>aumentaría tu</h1>
-                                    <h1>sueldo,</h1>
-                                    <h1 className="green">al cambiarte a</h1>
-                                    <h1 className="green">AFP Modelo.</h1>
+                                    <h1>Compara tu afp con</h1>
+                                    <h1>AFP modelo,</h1>
+                                    <h1 className="green">y descubre cuál</h1>
+                                    <h1 className="green">te conviene más.</h1>
                                     <p>
-                                        Únete a la AFP con una de las comisiones más bajas del
-                                        mercado.
+                                    La rentabilidad y la comisión pueden hacer una gran diferencia en tu pensión. Mira cuanto podrías haber ahorrado en AFP Modelo.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-12  col-md-7 bloque form">
+                        <div className="col-sm-12  col-md-6 bloque form">
                             <APVForm token={bearer} urlPostSimulacion={urlPostSimulacion} />
                         </div>
                     </div>

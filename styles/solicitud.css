@@ -1,3 +1,6 @@
+.solicitud{
+    margin-bottom: 5rem;
+}
 .solicitud .txt {
     width: 700px;
     margin-top: 2rem;
@@ -27,6 +30,7 @@
 @media (max-width: 36em) {
     .solicitud .txt {
         width: 100%;
+        margin-top: 0;
     }
 
         .solicitud .txt h4 {
@@ -37,5 +41,8 @@
 
         .solicitud .txt p {
             font-size: 16px !important;
+        }
+        .solicitud .container-title{
+            padding: 1rem;
         }
 }
