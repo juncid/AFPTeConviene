@@ -1,34 +1,43 @@
-.resultado .header h1 {
-    margin: 2rem;
+.resultado {
+    margin: 3rem 0rem 10rem 0;
+}
+
+.resultado .header h2 {
+    margin-bottom: 1.5rem;
 }
 
 .resultado .header p {
-    width: 600px;
+    width: 100%;
     font-family: Poppins, sans-serif;
+    margin-bottom: 0rem;
+}
+
+.resultado .card {
+    width: 83%;
 }
 
 .resultado .calcularApv .card-header {
     padding-bottom: 0;
 }
 
-    .resultado .calcularApv .card-header p {
-        margin: 0;
-    }
+.resultado .calcularApv .card-header p {
+    margin: 0;
+}
 
 .resultado .calcularApv .card-body {
     padding: 0;
     padding-bottom: 1rem;
 }
 
-    .resultado .calcularApv .card-body input {
-        height: 53px;
-        width: 261px;
-        background-color: #ffffff;
-    }
+.resultado .calcularApv .card-body input {
+    height: 53px;
+    width: 261px;
+    background-color: #ffffff;
+}
 
-        .resultado .calcularApv .card-body input label {
-            transform: translate(5px, -1.7rem);
-        }
+.resultado .calcularApv .card-body input label {
+    transform: translate(5px, -1.7rem);
+}
 
 .resultado .calcularApv small {
     font-size: 14px !important;
@@ -51,16 +60,20 @@
     margin-top: 10rem;
 }
 
-.resultado .ctas {
+.resultado .row {
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 8rem;
 }
 
-    .resultado .ctas .container .btn {
-        margin-top: 1rem;
-        height: 60px;
-        width: 360px;
-    }
+.resultado .row.first {
+    margin-top: 3rem;
+}
+
+.resultado .ctas .container .btn {
+    margin-top: 1rem;
+    height: 60px;
+    width: 360px;
+}
 
 .resultado #calcular {
     background-color: transparent;
@@ -68,30 +81,63 @@
     outline: none;
 }
 
+.resultado table td {
+    color: #54575C;
+}
+
 @media (max-width: 36em) {
+    .resultado .row {
+        margin-bottom: 3rem !important;
+    }
     .resultado .header {
         padding: 0;
         margin: 0 1.5rem;
     }
-
-        .resultado .header p {
-            width: 360px;
-            text-align: left;
-        }
-
-    .resultado .volver {
-        font-size: 14px;
+    .resultado .header p {
+        font-size: 1rem !important;
+        text-align: left;
     }
-
-    .resultado .calcularApv {
-        margin: 1.5rem 0;
+    .resultado .header h2 {
+        font-size: 36px !important;
     }
-
-        .resultado .calcularApv .detalle small {
-            margin: 1.5rem 0;
-        }
-
-    .resultado .ctas .container {
-        margin: 1.5rem 0;
+    .resultado .header h2::after {
+        content: url('../public/assets/svg/corazon.svg');
+        padding-left: 9px;
     }
+    .resultado h3 {
+        font-size: 20px !important;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+    }
+    .resultado .like p {
+        display: inline !important;
+        width: 88%;
+    }
+    .resultado .like p::after {
+        background-image: url('../public/assets/svg/manitoLike.svg');
+        background-size: 20px 30px;
+        display: inline-block;
+        content: "";
+        width: 20px;
+        height: 30px;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 30%;
+    }
+    .resultado .row .ctn{
+        padding: 0 1.5rem;
+        margin-bottom: 3rem;
+    }
+    .resultado .row .ctn span{
+        margin: 0.5rem 0;
+    }
+    .resultado .card{
+        width: 100%;
+    }
+    .resultado .card-body{
+        padding: 0.5rem;
+    } 
+    .resultado .btn {
+        margin-top: 1rem;
+    }   
 }

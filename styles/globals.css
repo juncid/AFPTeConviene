@@ -139,7 +139,12 @@ section {
 
 .green-tabla {
     background-color: #72b500 !important;
-    color: #ffffff;
+    color: #ffffff !important;
+}
+
+.blue-tabla {
+    background-color: #0B7AC7 !important;
+    color: #ffffff !important;
 }
 
 .disclaimer-modal {

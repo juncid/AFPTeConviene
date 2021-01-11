@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Head from "next/head";
 import mujerSAC from "../public/assets/svg/mujersac.svg"
-import corazon from "../public/assets/svg/corazon.svg"
+import chanchitoCorazon from "../public/assets/svg/chanchitoCorazon.svg"
+import manito from "../public/assets/svg/manitoLike.svg"
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchposts } from "../store/actions/postAction";
@@ -131,20 +132,21 @@ export default function Resultado(props) {
             </Head>
             <section>
                 <div className="resultado">
-                    <div className="row">
-                        <div className="col-12 mx-auto text-left header">
-                            <div className='offset-1 d-flex justify-content-left flex-column'>
-                                <div className="row">
-                                    <h2>Tus ahorros crecen con Afp Modelo </h2>
-                                    <img src={corazon} alt="corazon"/>
+                    <div className="row first">
+                        <div className="col-md-12 d-flex header offset-md-1">
+                            <div className="col-md-6 col-sm-10 d-flex justify-content-end flex-column p-0">
+                                <div>
+                                    <h2>Tus ahorros crecen con Afp Modelo</h2>
+                                    <p>La combinanción de la rentabilidad que obtienes con AFP Modelo menos la comisión que pagarías da como resultado un mayor ahorro para ti.</p>
                                 </div>
-                                <p>La combinanción de la rentabilidad que obtienes con AFP Modelo menos la
-                                    comisión que pagarías da como resultado un mayor ahorro para ti.</p>
+                            </div>
+                            <div className="col-md-6 mx-3 desktop">
+                                <img src={chanchitoCorazon} alt="corazon"/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-5 offset-md-1 d-flex flex-column">
+                        <div className="ctn col-md-5 offset-md-1 d-flex flex-column">
                             <h3>El ahorro en tu fondo obligatario aumenta</h3>
                             <span>La rentabilidad obtenida en tu actual Afp versus la que podrías
 haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te invitamos a ver tu resultado.</span>
@@ -156,8 +158,7 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                                         >
                                             <thead>
                                             <tr>
-                                                <th>{''}</th>
-                                                <th className="text-right">{''}</th>
+                                                <th>Este es el resultado de tu comparación:</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -182,7 +183,7 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                                 </Card.Body>
                             </Card>
                         </div>
-                        <div className="col-md-5 d-flex flex-column calcularApv">
+                        <div className="ctn col-md-5 d-flex flex-column">
                             <h3>Cómo hacer crecer tu pensión</h3>
                             <span>Tu ahorro en comisión puede hacer la diferencia, en Modelo solo pagas un 0,77%. Si hubieras invertido este monto en un APV hoy en día tendrías el siguiente monto:</span>
                             <br/>
@@ -193,8 +194,7 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                                     >
                                         <thead>
                                         <tr>
-                                            <th>{''}</th>
-                                            <th className="text-right">{''}</th>
+                                            <th>Si con tu ahorro hubieses abierto un APV:</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -207,8 +207,8 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                                             <td className="text-right">Valor B</td>
                                         </tr>
                                         <tr>
-                                            <td className="green-tabla">Bonificaci{oacento}n fiscal:</td>
-                                            <td className="text-right green-tabla">Valor C</td>
+                                            <td className="blue-tabla">Bonificaci{oacento}n fiscal:</td>
+                                            <td className="text-right blue-tabla">Valor C</td>
                                         </tr>
                                         <tr>
                                             <td>Total APV</td>
@@ -220,9 +220,15 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                             </Card>
                         </div>
                     </div>
+                    <div className='row like'>
+                        <div className='ctn col-12 d-flex justify-content-center'>
+                            <p className='d-flex justify-content-end flex-column'>Si te gusto esta simulación te invitamos a ser parte de Afp Modelo y ver nuestros productos para ti.</p>
+                            <img className='mx-3 desktop' src={manito} alt="like"/>
+                        </div>
+                    </div>
                     <div className='row ctas'>
-                        <div className="col-md-4 text-center d-block offset-md-2 container">
-                            <p>{interrogacion}No eres afiliado de Afp Modelo?</p>
+                        <div className="ctn col-md-5 offset-md-1 d-flex flex-column">
+                            <p className="text-center">{interrogacion}No eres afiliado de Afp Modelo?</p>
                             <div className='d-flex justify-content-center'>
                                 <button
                                     type="button"
@@ -232,18 +238,18 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                                 >C{aacento}mbiate a AFP Modelo</button>
                             </div>
                         </div>
-                        <div className="col-md-5 text-center d-block container">
-                            <p>{interrogacion}Quieres saber los beneficios de abrir una APV? </p>
+                        <div className="ctn col-md-5 d-flex flex-column">
+                            <p className="text-center">{interrogacion}Quieres saber los beneficios de abrir una APV? </p>
                             <div className='d-flex justify-content-center'>
                                 <button type="button" id="Apertura_no_Afiliado" className="btn btn-lg btn-block blueBtn" onClick={contactarme}>Ir a Que APV me conviene</button>
                             </div>
                         </div>
                     </div>
                     <div className="row container-padre dudas">
-                        <div className="col-md-2 d-flex desktop">
+                        <div className="ctn col-md-2 d-flex desktop">
                             <img src={mujerSAC} alt="Dudas" />
                         </div>
-                        <div className="col-sm-12 col-md-6 offset-md-2 d-flex flex-column contenedor">
+                        <div className="ctn col-sm-12 col-md-6 offset-md-2 d-flex flex-column contenedor">
                             <div className="txtDesktop parrafo2">
                                 <div className="container-title">
                                     <h2>{interrogacion}A{uacento}n tienes dudas?</h2>
