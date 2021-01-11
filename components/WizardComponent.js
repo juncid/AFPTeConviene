@@ -53,7 +53,7 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
 
     return (
         <div className="row">
-            <div className="col-sm-12 col-md-10 bloque form">
+            <div className="col-sm-12 col-md-11 bloque form">
                 <div className="card formulario">
                     <div>
                         <Stepper
@@ -235,7 +235,7 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                     </div>
                 </div>
             </div>
-            <div className="col-md-2 desktop">
+            <div className="col-md-1 desktop">
                 {<img src={joven2} alt="joven modelo" />}
             </div>
         </div>
