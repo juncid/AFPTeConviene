@@ -11,20 +11,9 @@ import axios from "axios";
 import MaskedInput from "react-text-mask";
 import { dineroMask } from "../utils/inputMask"
 import { cleanDigitos } from '../utils/cleanInputMask';
-
-
+import {aacento, eacento, iacento, oacento, uacento, interrogacion} from '../utils/caracteresUTF8'
 
 export default function Resultado(props) {
-
-    const aacento = "\u00e1";
-    const eacento = "\u00e9";
-    const iacento = "\u00ed";
-    const oacento = "\u00f3";
-    const uacento = "\u00fa";
-    const enhe = '\u00f1';
-    const interrogacion = '\u00BF';
-    const comillaIzquierda = '\u201C';
-    const comillaDerecha = '\u201D';
 
     const headers = {
         "Content-Type": "application/json"

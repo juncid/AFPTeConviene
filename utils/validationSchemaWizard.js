@@ -1,11 +1,6 @@
 import * as Yup from "yup";
 import { rutValidador } from "./validationRut";
-
-const aacento = "\u00e1";
-const eacento = "\u00e9";
-const iacento = "\u00ed";
-const oacento = "\u00f3";
-const uacento = "\u00fa";
+import {aacento, eacento, iacento, oacento, uacento} from "./caracteresUTF8";
 
 export const Step1Schema = Yup.object({
     nombre: Yup
@@ -46,11 +41,11 @@ export const Step2Schema = Yup.object({
     ahorro: Yup
         .string()
         .transform(value => value.replace(/[^\d]/g, ''))
-        .matches(/^[0-9]+$/, `Ingrese el monto en pesos que desea ahorrar desde $1.000.`)
+        .matches(/^[0-9]+$/, `Ingrese el monto en pesos que tienes ahorrado en tu cuenta obligatoria.`)
         .test('Sueldo-validacion', `Ingrese un monto desde $1.000.`, function (value) {
             return (value >= 1000)
         })
-        .required('Por favor ingrese el monto que desea ahorrar desde $1.000.'),
+        .required('Por favor ingrese el monto que tiene ahorrado en su cuenta obligatoria.'),
     afp: Yup
         .string()
         .test('afp-validacion', 'Por favor seleccione su AFP', function (afp){

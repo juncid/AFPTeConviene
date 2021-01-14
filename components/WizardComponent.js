@@ -91,12 +91,12 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                                                                 className="form-check-input"
                                                                 type="radio"
                                                                 name="retiro10"
-                                                                id="inlineRadio1"
+                                                                id="retiro1"
                                                                 value="true"
                                                             />
                                                             <label
                                                                 className="form-check-label"
-                                                                htmlFor="inlineRadio1"
+                                                                htmlFor="retiro1"
                                                             >
                                                                 Si
                                                             </label>
@@ -107,12 +107,12 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                                                                 className="form-check-input"
                                                                 type="radio"
                                                                 name="retiro10"
-                                                                id="inlineRadio2"
+                                                                id="retiro2"
                                                                 value="false"
                                                             />
                                                             <label
                                                                 className="form-check-label"
-                                                                htmlFor="inlineRadio2"
+                                                                htmlFor="retiro2"
                                                             >No
                                                             </label>
                                                         </div>

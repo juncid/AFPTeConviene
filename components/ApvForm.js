@@ -6,20 +6,12 @@ import { Step1Schema, Step2Schema} from "../utils/validationSchemaWizard";
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import MaskedInput from "react-text-mask";
-import { celularMask, dineroMask, rutMask } from "../utils/inputMask"
-import { cleanDigitos, cleanRut } from "../utils/cleanInputMask"
+import { celularMask, dineroMask, rutMask } from "../utils/inputMask";
+import { cleanDigitos, cleanRut } from "../utils/cleanInputMask";
+import {iacento} from "../utils/caracteresUTF8";
 
 const APVForm = (props) => {
-
-    const aacento = "\u00e1";
-    const eacento = "\u00e9";
-    const iacento = "\u00ed";
-    const oacento = "\u00f3";
-    const uacento = "\u00fa";
-    const enhe = '\u00f1';
-    const interrogacion = '\u00BF';
-
-    const router = useRouter()
+    const router = useRouter();
 
     const initialValues = {
         nombre: '',
@@ -40,6 +32,7 @@ const APVForm = (props) => {
                 initialValues={initialValues}
                 onSubmit={values => {
                     console.log(values);
+                    console.log(props);
                     /*
                     const headers = {
                         "Content-Type": "application/json",
@@ -264,7 +257,7 @@ const APVForm = (props) => {
                                     htmlFor="ahorro"
                                     className="control-label"
                                 >
-                                    Monto Ahorro
+                                    Monto Ahorrado
                                 </label>
                                 <MaskedInput
                                     {...field}
@@ -274,7 +267,7 @@ const APVForm = (props) => {
                                     ${meta.touched ? (meta.error ? "is-invalid" : "is-valid") : ""}`}
                                     id="ahorro"
                                     aria-describedby="ahorroAyuda"
-                                    placeholder="Ahorro Mensual"
+                                    placeholder="Monto Ahorrado"
                                 />
                                 <small
                                     id="ahorroAyuda"
@@ -282,7 +275,7 @@ const APVForm = (props) => {
                                 >
                                     {meta.touched && meta.error
                                         ? meta.error
-                                        : `El monto en pesos que invertir${iacento}as en tu APV.`
+                                        : `El monto que tienes actualmente en tu cuenta obligatoria.`
                                     }
                                 </small>
                             </div>

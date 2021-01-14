@@ -1,36 +1,28 @@
 import Head from 'next/head'
 import React, { useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
-import ampolleta from "../public/assets/svg/ampolleta.svg";
-import backgroundMobile from "../public/assets/svg/mobiles/backgroundMobile.svg";
+import shapeBkg from "../public/assets/svg/mobiles/backgroundMobile.svg";
 import APVForm from "../components/ApvForm";
 import axios from 'axios';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { v4 as uuidv4 } from 'uuid';
-import shapeBkg from "../public/assets/svg/mobiles/backgroundMobile.svg";
+import {iacento, oacento} from "../utils/caracteresUTF8";
 
 
 export default function Home(props) {
-    const router = useRouter()
+    const router = useRouter();
     const bearer = props.bearer;
     const urlPostSimulacion = props.urlPostSimulacion;
-    const aacento = '\u00e1';
-    const eacento = '\u00e9';
-    const iacento = '\u00ed';
-    const oacento = '\u00f3';
-    const uacento = '\u00fa';
-    const enhe = '\u00f1';
-    const interrogacion = '\u00BF';
-
 
     if (typeof window !== "undefined") {
+        localStorage.setItem('bearer', props.bearer);
         localStorage.setItem('sessionId', props.idSesion);
         localStorage.setItem('rut', props.rutConsultaRegimen);
     }
 
     const headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${props.bearer}`
     };
 
     const body_eventos_regimenes = {

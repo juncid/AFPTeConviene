@@ -1,26 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import {eacento, iacento, oacento, comillaIzquierda, comillaDerecha} from '../utils/caracteresUTF8'
 
 
 const Footer = () => {
     const [datosPrevisionales, setDatosPrevisionales] = useState({
     });
-    const aacento = "\u00e1";
-    const eacento = "\u00e9";
-    const iacento = "\u00ed";
-    const oacento = "\u00f3";
-    const uacento = "\u00fa";
-    const enhe = '\u00f1';
-    const interrogacion = '\u00BF';
-    const comillaIzquierda = '\u201C';
-    const comillaDerecha = '\u201D';
-
-
     useEffect(() => {
         const obtenerDatosPrevisionales = async () => {
-            const filejson = await fetch("./datosPrevisionales.json");
+            const filejson = await fetch("https://apvbackendmanager.azurewebsites.net/ApvSimulacion/obtenercomisiones");
             const resultado = await filejson.json();
-
             setDatosPrevisionales({
                 mes: resultado["mes"],
                 anio: resultado["anio"],
