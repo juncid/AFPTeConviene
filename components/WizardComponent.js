@@ -53,7 +53,7 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
 
     return (
         <div className="row">
-            <div className="col-sm-12 col-md-11 bloque form">
+            <div className="bloque form d-flex containerForm">
                 <div className="card formulario">
                     <div>
                         <Stepper
@@ -234,9 +234,9 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                         </Formik>
                     </div>
                 </div>
-            </div>
-            <div className="col-md-1 desktop">
+                <div className="d-flex justify-content-center desktop jovenModelo">
                 {<img src={joven2} alt="joven modelo" />}
+            </div>
             </div>
         </div>
     );
