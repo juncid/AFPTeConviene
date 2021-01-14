@@ -105,20 +105,20 @@ export default function Home(props) {
                             <p className='txtMobileShape'>La comisión y la rentabilidad hacen una diferencia en tus ahorros. Revisa cuánto hubieras ahorrado con Modelo</p>
                             <img src={shapeBkg} className="background " alt="compara tu AFP"/>
                         </div>
-                        <div className="col-sm-12 col-md-6 bloque desktop">
+                        <div className="bloque desktop">
                             <div className="txtDesktop">
                                 <div className="container-title">
-                                    <h1>Compara tu afp con</h1>
-                                    <h1>AFP modelo,</h1>
-                                    <h1 className="green">y descubre cuál</h1>
-                                    <h1 className="green">te conviene más.</h1>
+                                <h1>Compara tu afp con AFP modelo,
+                                        <br/>
+                                        <span className="green">y descubre cuál te conviene más.</span>
+                                    </h1>
                                     <p>
                                     La rentabilidad y la comisión pueden hacer una gran diferencia en tu pensión. Mira cuanto podrías haber ahorrado en AFP Modelo.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-12  col-md-6 bloque form">
+                        <div className="bloque form">
                             <APVForm token={bearer} urlPostSimulacion={urlPostSimulacion} />
                         </div>
                     </div>
