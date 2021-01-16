@@ -27,8 +27,8 @@ export default function solicitud() {
     return (
         <>
             <Head>
-                <title>Ahorro Previsional Voluntario | Solicitud de Contacto | AFP Modelo</title>
-                <meta name="description" content="Aumenta tu sueldo l{iacento}quido, pagando una menor comisi{oacento}n de AFP. Simula tu aumento de sueldo al cambiarte a AFP Modelo." />
+            <title>Que AFP te Conviene | Simula cuanto hubieses ahorrado en AFP Modelo | AFP Modelo</title>
+                <meta name="description" content={`Aumenta tus ahorros, pagando una menor comisi${oacento}n de AFP. Simula tu aumento de ahorro al cambiarte a AFP Modelo.`} />
                 <meta name="robots" content="noindex, follow" />
             </Head>
             <div className="solicitud" >
@@ -52,7 +52,7 @@ export default function solicitud() {
                                                     Visitar sitio de AFP Modelo
                                                 </button>
                                             </div>
-                                            <Link href="/" passHref>
+                                            <Link href="/resultado" passHref>
                                                 <a className='volver'>{' '}<img src={arrow} alt="arrow" />Volver atr{aacento}s</a>
                                             </Link>
                                         </div>

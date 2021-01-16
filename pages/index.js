@@ -13,79 +13,19 @@ export default function Home(props) {
     const router = useRouter();
     const bearer = props.bearer;
     const urlPostSimulacion = props.urlPostSimulacion;
+    //console.log(props);
 
     if (typeof window !== "undefined") {
         localStorage.setItem('bearer', props.bearer);
         localStorage.setItem('sessionId', props.idSesion);
-        localStorage.setItem('rut', props.rutConsultaRegimen);
     }
-
-    const headers = {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${props.bearer}`
-    };
-
-    const body_eventos_regimenes = {
-        "sessionId": props.idSesion,
-        "eventoId": 0,
-        "result0": 0,
-        "result1": 0,
-        "result2": 0,
-        "rut": props.rutConsultaRegimen
-    }
-
-    /*
-    function conocer_regimen_a(e) {
-        e.preventDefault()
-        body_eventos_regimenes.EventoId = 5;
-
-        axios
-            .post(props.urlIngresarEvento, body_eventos_regimenes, { headers: headers })
-            .then((response) => {
-                let data = response.data;
-
-                if (data) {
-                    router.push({
-                        pathname: '/regimenA',
-                    })
-                }
-            })
-            .catch(e => {
-                console.log(e);
-            });
-
-    }
-
-
-    function conocer_regimen_b(e) {
-        e.preventDefault()
-        body_eventos_regimenes.EventoId = 6;
-
-
-        axios
-            .post(props.urlIngresarEvento, body_eventos_regimenes, { headers: headers })
-            .then((response) => {
-                let data = response.data;
-
-                if (data) {
-                    router.push({
-                        pathname: '/regimenB',
-                    })
-                }
-            })
-            .catch(e => {
-                console.log(e);
-            });
-
-    }
-     */
 
     return (
         <div className="container home">
             <Head>
 
-                <title>Ahorro Previsional Voluntario | Simula tu APV | AFP Modelo</title>
-                <meta name="description" content={`Aumenta tu sueldo l${iacento}quido, pagando una menor comisi${oacento}n de AFP. Simula tu aumento de sueldo al cambiarte a AFP Modelo.`} />
+                <title>Que AFP te Conviene | Simula cuanto hubieses ahorrado en AFP Modelo | AFP Modelo</title>
+                <meta name="description" content={`Aumenta tus ahorros, pagando una menor comisi${oacento}n de AFP. Simula tu aumento de ahorro al cambiarte a AFP Modelo.`} />
                 <meta name="robots" content="noindex, follow" />
             </Head>
             <div>
@@ -135,7 +75,6 @@ export async function getServerSideProps(context) {
     const uriIngresarSimulacion = process.env.URI_INGRESAR_SIMULACION;
     const urlGetToken = `${baseUrl}${apiToken}`;
     const urlPostSimulacion = `${baseUrl}${uriIngresarSimulacion}`;
-    const rutConsultaRegimen = process.env.RUT_CONSULTA_REGIMEN;
     const urlIngresarEvento = `${baseUrl}${process.env.URI_ENVIAR_EVENTO}`
 
     const response = await axios
@@ -155,7 +94,6 @@ export async function getServerSideProps(context) {
         bearer,
         urlPostSimulacion,
         idSesion,
-        rutConsultaRegimen,
         urlIngresarEvento
     }
 

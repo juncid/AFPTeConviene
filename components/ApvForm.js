@@ -31,9 +31,7 @@ const APVForm = (props) => {
             <Wizard
                 initialValues={initialValues}
                 onSubmit={values => {
-                    console.log(values);
-                    console.log(props);
-                    /*
+
                     const headers = {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${props.token}`
@@ -41,35 +39,100 @@ const APVForm = (props) => {
 
                     const url = `${props.urlPostSimulacion}`;
 
-                    const body = {
-                        nombre: values.nombre,
+                    let tipoRetiro1 = false;
+                    let tipoRetiro2 = false;
+                    let retiro10 = false;
+
+                    if(values.retiro10Porciento)
+                    {
+                        retiro = true;
+                      if(values.retiros_realizados === 1){
+                        tipoRetiro1 = true;    
+                      } else if (values.retiros_realizados === 2) {
+                        tipoRetiro2 = true;    
+                      } else {
+                        tipoRetiro1 = true;
+                        tipoRetiro2 = true;  
+                      }     
+                    } else {
+                       tipoRetiro1 = false;
+                       tipoRetiro2 = false;    
+                    }
+
+                    const body= {
+                        nombreCompleto: values.nombre,
                         rut: cleanRut(values.rut),
                         correo: values.correo,
-                        celular: cleanDigitos(values.celular),
-                        sueldo: cleanDigitos(values.sueldo),
-                        ahorro: cleanDigitos(values.ahorro)
+                        numeroTelefonico: cleanDigitos(values.celular),
+                        aceptaCondicionesDeUso: values.terminosycondiciones,
+                        sueldoLiquido: cleanDigitos(values.sueldo),
+                        montoAhorrado: cleanDigitos(values.ahorro),
+                        idAfp: parseInt(values.afp),
+                        multifondo: values.multifondo,
+                        retiro10Porciento: retiro10,
+                        tipoRetiro1: tipoRetiro1,
+                        tipoRetiro2: tipoRetiro2
                     };
 
                     axios
                         .post(url, body, { headers: headers })
                         .then((response) => {
-                            let data = response.data;
+                            let data = response.data;  
 
+                            if (data) {
 
-                            if (data.idSimulacion) {
+                                localStorage.setItem('ahorroEnComision', data.ahorroEnComision);
+                                localStorage.setItem('apvAhorroApvAnual', data.apvAhorroApvAnual === null ? '0' : data.apvAhorroApvAnual );
+                                localStorage.setItem('apvBonificacionFiscal', data.apvBonificacionFiscal === null ? '0' : data.apvBonificacionFiscal);
+                                localStorage.setItem('apvTotalApv', data.apvTotalApv === null ? '0' : data.apvTotalApv);
+                                localStorage.setItem('cuotaInicial', data.cuotaInicial);
+                                localStorage.setItem('diferenciaDeRentabilidad', data.diferenciaDeRentabilidad);
+                                localStorage.setItem('rentabilidadAfpActual', data.rentabilidadAfpActual);
+                                localStorage.setItem('rentabilidadAfpModelo', data.rentabilidadAfpModelo);
+                                localStorage.setItem('resntaImponible', data.resntaImponible);
+                                localStorage.setItem('rut', cleanRut(values.rut));
+                                
+                                console.log("guardando evento");
+
                                 router.push({
                                     pathname: "/resultado",
-                                    query: {
-                                        id: data.idSimulacion,
-                                    },
                                 });
+
+                                /*
+                                const result2=data.apvTotalApv === null ? '0' : data.apvTotalApv;
+
+                                const body_eventos = {
+                                    "sessionId": props.idSesion,
+                                    "eventoId": 11,
+                                    "result0": parseInt(data.rentabilidadAfpModelo),
+                                    "result1": parseInt(data.rentabilidadAfpActual),
+                                    "result2": parseInt(result2),
+                                    "rut": cleanRut(values.rut)
+                                }
+
+                                
+                                axios
+                                    .post(props.urlIngresarEvento, body_eventos, { headers: headers })
+                                    .then((response) => {
+                                        let data = response.data;
+                                        console.log(response);
+                            
+                                        if (data) {
+                                            router.push({
+                                                    pathname: "/resultado",
+                                            });
+                                        }
+                                    })
+                                    .catch(e => {
+                                        console.log(e);
+                                    });
+
+                                */
                             }
                         })
                         .catch(e => {
                             console.log(e);
                         });
-
-                    */
                 }}
             >
                 <WizardStep
@@ -304,12 +367,12 @@ const APVForm = (props) => {
                                     <option value="0">AFP Capital</option>
                                     <option value="1">AFP Cuprum</option>
                                     <option value="2">AFP Habitat</option>
-                                    <option value="3">AFP Plan Vital</option>
+                                    <option value="3">AFP PlanVital</option>
                                     <option value="4">AFP Provida</option>
                                     <option value="6">AFP Uno</option>
                                 </select>
                                 <small
-                                    id="ahorroAyuda"
+                                    id="afpAyuda"
                                     className={`form-text ${meta.touched && meta.error ? "is-invalid" : ""}`}
                                 >
                                     {meta.touched && meta.error}

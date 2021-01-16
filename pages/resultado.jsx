@@ -24,7 +24,25 @@ export default function Resultado(props) {
     const handleClose = () => setModalShow(false);
     const handleShow = () => setModalShow(true);
     const [regimenData, setRegimenData] = useState({});
+    const [ahorroComision, setAhorroComision] = useState('');
+    const [apvAhorroApvAnual, setApvAhorroApvAnual] = useState('');
+    const [apvBonificacionFiscal, setApvBonificacionFiscal] = useState('');
+    const [apvTotalApv, setApvTotalApv] = useState('');
+    const [diferenciaDeRentabilidad, setDiferenciaDeRentabilidad] = useState('');
+    const [rentabilidadAfpActual, setRentabilidadAfpActual] = useState('');
+    const [rentabilidadAfpModelo, setRentabilidadAfpModelo] = useState('');
 
+
+    useEffect(() => {
+        
+        setRentabilidadAfpActual(localStorage.getItem('rentabilidadAfpActual'));
+        setRentabilidadAfpModelo(localStorage.getItem('rentabilidadAfpModelo'));
+        setDiferenciaDeRentabilidad(localStorage.getItem('diferenciaDeRentabilidad'));
+        setAhorroComision(localStorage.getItem('ahorroComision'));
+        setApvAhorroApvAnual(localStorage.getItem('apvAhorroApvAnual'));
+        setApvBonificacionFiscal(localStorage.getItem('apvBonificacionFiscal'));
+        setApvTotalApv(localStorage.getItem('apvTotalApv'));
+    }, []);
 
     const handleSubmit = values => {
         setIsLoading(true);
@@ -77,6 +95,9 @@ export default function Resultado(props) {
 
     function contactarme() {
 
+        window.location.href = "/solicitud";
+
+        /*
         body_eventos.EventoId = 8;
         axios
             .post(props.urlIngresarEvento, body_eventos, { headers: headers })
@@ -90,9 +111,20 @@ export default function Resultado(props) {
             .catch(e => {
                 console.log(e);
             });
+        */
+    }
+
+    function conocer_apv() {
+
+        window.location.href = "http://apvmodelo.azurewebsites.net/";
+
     }
 
     function apertura_afiliado() {
+
+        window.location.href = "https://www.afpmodelo.cl/Portal-Afiliado/Operaciones/Ahorro-Previsional-Voluntario/Mi-APV/Abrir-un-APV-Paso1.aspx?acceder&utm_source=QueAPVConviene&utm_medium=referal&utm_campaign=QueAPVConviene&utm_content=BotonAccion";
+
+        /*
         body_eventos.EventoId = 10;
 
         axios
@@ -107,6 +139,7 @@ export default function Resultado(props) {
             .catch(e => {
                 console.log(e);
             });
+            */
     }
 
     const dudas_texto =
@@ -115,8 +148,8 @@ export default function Resultado(props) {
     return (
         <>
             <Head>
-                <title>Ahorro Previsional Voluntario | Resultado Simulaci{oacento}n | AFP Modelo</title>
-                <meta name="description" content={`Aumenta tu sueldo l${iacento}quido, pagando una menor comisi${oacento}n de AFP. Simula tu aumento de sueldo al cambiarte a AFP Modelo.`} />
+            <title>Que AFP te Conviene | Simula cuanto hubieses ahorrado en AFP Modelo | AFP Modelo</title>
+                <meta name="description" content={`Aumenta tus ahorros, pagando una menor comisi${oacento}n de AFP. Simula tu aumento de ahorro al cambiarte a AFP Modelo.`} />
                 <meta name="robots" content="noindex, follow" />
             </Head>
             <section>
@@ -153,19 +186,19 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                                             <tbody>
                                             <tr>
                                                 <td>Rentabilidad AFP Actual:</td>
-                                                <td className="text-right">Valor A</td>
+                                                <td className="text-right">{rentabilidadAfpActual === null ? '$1.000' : '$'+parseInt(rentabilidadAfpActual)+parseInt(1000)}</td>
                                             </tr>
                                             <tr>
                                                 <td>Rentabilidad AFP Modelo:</td>
-                                                <td className="text-right">Valor B</td>
+                                                <td className="text-right">{rentabilidadAfpModelo === null ? '$800' : '$'+parseInt(rentabilidadAfpModelo)+parseInt(800)}</td>
                                             </tr>
                                             <tr>
                                                 <td className="green-tabla">Diferencia de rentabilidad:</td>
-                                                <td className="text-right green-tabla">Valor C</td>
+                                                <td className="text-right green-tabla">{diferenciaDeRentabilidad === null ? '$200' : '$'+parseInt(diferenciaDeRentabilidad)+parseInt(200)}</td>
                                             </tr>
                                             <tr>
                                                 <td>Ahorro en comisi{oacento}n</td>
-                                                <td className="text-right">VD = (VA-(VB-VC))</td>
+                                                <td className="text-right">{ahorroComision === null ? '$200' : '$'+parseInt(ahorroComision)+parseInt(200)}</td>
                                             </tr>
                                             </tbody>
                                         </Table>
@@ -189,19 +222,19 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                                         <tbody>
                                         <tr>
                                             <td>Ahorro en comisi{oacento}n:</td>
-                                            <td className="text-right">Valor A</td>
+                                            <td className="text-right">{ahorroComision === null ? '$200' : '$'+parseInt(ahorroComision)+parseInt(200)}</td>
                                         </tr>
                                         <tr>
                                             <td>Ahorro APV anual:</td>
-                                            <td className="text-right">Valor B</td>
+                                            <td className="text-right">{apvAhorroApvAnual === null ? '$0' : '$'+parseInt(apvAhorroApvAnual)+parseInt(0)}</td>
                                         </tr>
                                         <tr>
                                             <td className="blue-tabla">Bonificaci{oacento}n fiscal:</td>
-                                            <td className="text-right blue-tabla">Valor C</td>
+                                            <td className="text-right blue-tabla">{apvAhorroApvAnual === null ? '$30' : '$'+parseInt(apvAhorroApvAnual)+parseInt(30)}</td>
                                         </tr>
                                         <tr>
                                             <td>Total APV</td>
-                                            <td className="text-right">VD = (VA-(VB-VC))</td>
+                                            <td className="text-right">{apvTotalApv === null ? '$230' : '$'+parseInt(apvTotalApv)+parseInt(230)}</td>
                                         </tr>
                                         </tbody>
                                     </Table>
@@ -230,7 +263,7 @@ haber obtenido durante el mismo período de tiempo en AFP Modelo es mayor. Te in
                         <div className="ctn col-md-5 d-flex flex-column">
                             <p className="text-center">{interrogacion}Quieres saber los beneficios de abrir una APV? </p>
                             <div className='d-flex justify-content-center'>
-                                <button type="button" id="Apertura_no_Afiliado" className="btn btn-lg btn-block blueBtn" onClick={contactarme}>Ir a Que APV me conviene</button>
+                                <button type="button" id="Apertura_no_Afiliado" className="btn btn-lg btn-block blueBtn" onClick={conocer_apv}>Ir a Que APV me conviene</button>
                             </div>
                         </div>
                     </div>

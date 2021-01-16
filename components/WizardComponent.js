@@ -3,25 +3,14 @@ import { Form, Formik, Field } from "formik";
 import joven2 from "../public/assets/svg/joven2.svg"
 import Stepper from 'react-stepper-horizontal';
 import TerminosModal from "./TerminosModal";
-
-export const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
+import {aacento, iacento} from "../utils/caracteresUTF8";
 
 export const Wizard = ({ children, initialValues, onSubmit }) => {
-
-    const aacento = "\u00e1";
-    const eacento = "\u00e9";
-    const iacento = "\u00ed";
-    const oacento = "\u00f3";
-    const uacento = "\u00fa";
-    const enhe = '\u00f1';
-    const interrogacion = '\u00BF';
-    const comillaIzquierda = '\u201C';
-    const comillaDerecha = '\u201D';
 
     const [modalShow, setModalShow] = useState(false);
     const handleClose = () => setModalShow(false);
     const handleShow = () => setModalShow(true);
+    const [isValidoRetiro, setIsValidoRetiro] = useState(false);
 
     const [stepNumber, setStepNumber] = useState(0);
     const steps = React.Children.toArray(children);
@@ -43,6 +32,7 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
         }
         if (isLastStep) {
             return onSubmit(values, bag);
+
         } else {
             bag.setTouched({});
             next(values);
@@ -71,6 +61,7 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                             validationSchema={step.props.validationSchema}
                         >
                             {(formik) => (
+
 
                                 <Form>
                                     {step}
@@ -120,6 +111,8 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                                                 )}
                                             </Field>
                                             {formik.values.retiro10 === "true" ?
+                                                <>
+                                                    <span> ¿Cúal de los retiros realizaste?</span>
                                                 <Field name="retiros_realizados">
                                                     {({
                                                           field,
@@ -173,7 +166,7 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                                                             </div>
                                                         </div>
                                                     )}
-                                                </Field> : ''}
+                                                </Field> </> : ''}
                                         </> }
                                         <div className="form-check">
                                             <Field name="terminosycondiciones">
@@ -218,14 +211,26 @@ export const Wizard = ({ children, initialValues, onSubmit }) => {
                                             </Field>
                                         </div>
                                         <div className="col justify-content-center d-flex">
-                                            <button
-                                                type="submit"
-                                                id={stepNumber > 0 ? 'P2_lead' : 'P1_ingreso_datos_personales' }
-                                                className="btn btn-lg btn-block purple"
-                                                disabled={!(formik.isValid && formik.dirty)}
-                                            >
-                                                {stepNumber > 0 ? 'Calcular' : 'Comenzar'}
-                                            </button>
+                                            {stepNumber === 1 ?
+                                                <button
+                                                    type="submit"
+                                                    id='P2_lead'
+                                                    className="btn btn-lg btn-block purple"
+                                                    disabled={!((formik.isValid && formik.dirty) && (formik.touched.retiro10 && formik.touched.retiros_realizados))}
+                                                >
+                                                    Calcular
+                                                </button>
+                                                :
+                                                <button
+                                                    type="submit"
+                                                    id='P1_ingreso_datos_personales'
+                                                    className="btn btn-lg btn-block purple"
+                                                    disabled={!(formik.isValid && formik.dirty)}
+                                                >
+                                                    Comenzar
+                                                </button>
+                                            }
+
                                         </div>
                                     </div>
                                 </Form>
